@@ -1,9 +1,22 @@
 screenLib = require("lib/screen")
 json = require("lib/json")
 require("lib/loveExpanded")
-
+require("lib/touch_saber")
 
 love.window.updateMode(nil,nil,{vSync = false, resizable = true, msaa = 4})
+
+if love.system.getOS() == "Windows" then
+    local scale = 40
+    love.window.setMode(scale*9,scale*16)
+else
+    love.window.setFullscreen(true)
+    local w, h = love.window.getDesktopDimensions()
+    if h > w then
+        love.window.setMode(w, h)
+    else
+        love.window.setMode(h, w) 
+    end
+end
 
 gameStates = {}
 currentGameState = {}
