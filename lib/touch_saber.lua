@@ -11,3 +11,4 @@ function getAllTouches()
     end
     return touches
 end
+
